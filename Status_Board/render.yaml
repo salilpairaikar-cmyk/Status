@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: production-status-board
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /display
+    envVars:
+      - key: NODE_VERSION
+        value: 22.15.1
+      - key: DATABASE_PATH
+        value: /var/data/production-board.db
+    disk:
+      name: production-data
+      mountPath: /var/data
+      sizeGB: 1
